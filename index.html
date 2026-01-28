@@ -3,308 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repositori Fail Bintang</title>
+    <title>Bintang - Simpanan Fail Eksklusif</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
         body {
+            background: radial-gradient(circle at top left, #1e293b, #0f172a, #020617);
+            color: #f8fafc;
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        /* Animasi Masuk */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade {
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Efek Glassmorphism Mewah */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        .file-row {
-            transition: all 0.2s ease;
+        .file-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .file-row:hover {
-            background-color: #f8fafc;
-            transform: scale(1.005);
+        .file-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: #60a5fa;
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Efek cahaya di latar belakang */
+        .glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: #3b82f6;
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
         }
 
         .download-btn {
-            transition: all 0.2s ease;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            transition: all 0.3s ease;
         }
 
-        .download-btn:active {
-            transform: scale(0.9);
-        }
-
-        /* Animasi masuk untuk senarai */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-            animation: fadeInUp 0.5s ease forwards;
+        .download-btn:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            filter: brightness(1.1);
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased">
+<body class="min-h-screen py-12 px-4">
 
-    <!-- Header Section -->
-    <header class="bg-indigo-700 text-white pt-20 pb-24 px-6 relative overflow-hidden">
-        <!-- Elemen Dekoratif -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <svg class="absolute right-0 bottom-0" width="400" height="400" fill="none" viewBox="0 0 400 400">
-                <circle cx="200" cy="200" r="150" stroke="white" stroke-width="2" />
-                <circle cx="200" cy="200" r="100" stroke="white" stroke-width="1" />
-            </svg>
-        </div>
+    <!-- Efek Cahaya Latar -->
+    <div class="glow top-0 left-1/4"></div>
+    <div class="glow bottom-0 right-1/4"></div>
 
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="relative inline-block mb-6">
-                <div class="w-32 h-32 rounded-full border-4 border-white/30 p-1 mx-auto shadow-2xl overflow-hidden bg-indigo-800">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200" 
-                         alt="Foto Bintang" 
-                         onerror="this.src='https://ui-avatars.com/api/?name=Bintang&background=6366f1&color=fff'"
-                         class="w-full h-full object-cover rounded-full">
-                </div>
-                <div class="absolute bottom-1 right-2 bg-green-500 w-6 h-6 border-4 border-indigo-700 rounded-full shadow-sm" title="Aktif Sekarang"></div>
-            </div>
-            <h1 class="text-4xl font-extrabold mb-2 tracking-tight">Bintang</h1>
-            <p class="text-indigo-100 font-medium opacity-90 text-lg">Pentadbir Rangkaian & Pembangun Web</p>
-            <div class="mt-4 flex justify-center space-x-3">
-                <span class="bg-indigo-800/50 px-3 py-1 rounded-full text-xs font-semibold border border-indigo-500/30">Linux</span>
-                <span class="bg-indigo-800/50 px-3 py-1 rounded-full text-xs font-semibold border border-indigo-500/30">Cisco</span>
-                <span class="bg-indigo-800/50 px-3 py-1 rounded-full text-xs font-semibold border border-indigo-500/30">Fullstack</span>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-4xl mx-auto -mt-12 px-4 pb-20 relative z-20">
-        <!-- Dashboard Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div class="glass-card p-6 rounded-2xl shadow-lg text-center">
-                <div class="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-xl mb-3">
-                    <i class="fas fa-box-archive text-orange-500 text-xl"></i>
-                </div>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Arkib & Projek</p>
-                <p class="text-2xl font-bold text-slate-800">3 Fail</p>
-            </div>
-            <div class="glass-card p-6 rounded-2xl shadow-lg text-center">
-                <div class="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl mb-3">
-                    <i class="fas fa-book-open text-blue-600 text-xl"></i>
-                </div>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Tutorial (DOCX)</p>
-                <p class="text-2xl font-bold text-slate-800">2 Fail</p>
-            </div>
-            <div class="glass-card p-6 rounded-2xl shadow-lg text-center">
-                <div class="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-xl mb-3">
-                    <i class="fas fa-table text-green-600 text-xl"></i>
-                </div>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Laporan Kerja</p>
-                <p class="text-2xl font-bold text-slate-800">1 Fail</p>
-            </div>
-        </div>
-
-        <!-- Search & Filter -->
-        <div class="mb-6 flex flex-col md:flex-row gap-4">
-            <div class="relative flex-grow">
-                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                <input type="text" placeholder="Cari fail dalam repositori..." class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white shadow-sm transition-all">
-            </div>
-        </div>
-
-        <!-- File List Container -->
-        <div class="glass-card rounded-3xl shadow-xl overflow-hidden border border-white">
-            <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/50 space-y-2 sm:space-y-0">
-                <div>
-                    <h2 class="text-xl font-bold text-slate-800">Repositori Digital</h2>
-                    <p class="text-sm text-slate-500">Senarai fail yang boleh dimuat turun</p>
-                </div>
-                <div class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-slate-100 text-slate-500 rounded-full">
-                    Kemas kini: Hari Ini, 11:27 AM
-                </div>
-            </div>
-
-            <!-- File List -->
-            <div class="divide-y divide-slate-50">
-                
-                <!-- Bintang Template Hotspot -->
-                <div class="file-row p-5 flex items-center justify-between group animate-fade-in" style="animation-delay: 0.1s;">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-orange-100 group-hover:bg-orange-200 rounded-2xl flex items-center justify-center transition-colors shadow-sm">
-                            <i class="fas fa-file-zipper text-orange-600 text-lg"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-700 leading-tight text-sm md:text-base">bintang_template_hotspot.rar</h3>
-                            <div class="flex items-center mt-1 space-x-2">
-                                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold uppercase">RAR</span>
-                                <span class="text-[10px] text-slate-400 font-medium">44 KB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="bintang_template_hotspot.rar" download onclick="handleDownload(event, 'bintang_template_hotspot.rar')" class="download-btn w-10 h-10 flex items-center justify-center bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-xl shadow-sm transition-all">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-
-                <!-- Bintang Template Web -->
-                <div class="file-row p-5 flex items-center justify-between group animate-fade-in" style="animation-delay: 0.2s;">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-indigo-100 group-hover:bg-indigo-200 rounded-2xl flex items-center justify-center transition-colors shadow-sm">
-                            <i class="fas fa-file-code text-indigo-600 text-lg"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-700 leading-tight text-sm md:text-base">bintang_template_web.zip</h3>
-                            <div class="flex items-center mt-1 space-x-2">
-                                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold uppercase">ZIP</span>
-                                <span class="text-[10px] text-slate-400 font-medium">11 KB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="bintang_template_web.zip" download onclick="handleDownload(event, 'bintang_template_web.zip')" class="download-btn w-10 h-10 flex items-center justify-center bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-xl shadow-sm transition-all">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-
-                <!-- Bintang Tutor DNS & Web Server -->
-                <div class="file-row p-5 flex items-center justify-between group animate-fade-in" style="animation-delay: 0.3s;">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-blue-100 group-hover:bg-blue-200 rounded-2xl flex items-center justify-center transition-colors shadow-sm">
-                            <i class="fas fa-file-word text-blue-600 text-lg"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-700 leading-tight text-sm md:text-base">tutor_dns_web_server.docx</h3>
-                            <div class="flex items-center mt-1 space-x-2">
-                                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold uppercase">DOCX</span>
-                                <span class="text-[10px] text-slate-400 font-medium">178 KB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="tutor_dns_web_server.docx" download onclick="handleDownload(event, 'tutor_dns_web_server.docx')" class="download-btn w-10 h-10 flex items-center justify-center bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-xl shadow-sm transition-all">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-
-                <!-- Bintang Tutor HTTP & HTTPS -->
-                <div class="file-row p-5 flex items-center justify-between group animate-fade-in" style="animation-delay: 0.4s;">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-blue-100 group-hover:bg-blue-200 rounded-2xl flex items-center justify-center transition-colors shadow-sm">
-                            <i class="fas fa-file-shield text-blue-600 text-lg"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-700 leading-tight text-sm md:text-base">tutor_http_https.docx</h3>
-                            <div class="flex items-center mt-1 space-x-2">
-                                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold uppercase">DOCX</span>
-                                <span class="text-[10px] text-slate-400 font-medium">154 KB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="tutor_http_https.docx" download onclick="handleDownload(event, 'tutor_http_https.docx')" class="download-btn w-10 h-10 flex items-center justify-center bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-xl shadow-sm transition-all">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-
-                <!-- Topologi -->
-                <div class="file-row p-5 flex items-center justify-between group animate-fade-in" style="animation-delay: 0.5s;">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-purple-100 group-hover:bg-purple-200 rounded-2xl flex items-center justify-center transition-colors shadow-sm">
-                            <i class="fas fa-network-wired text-purple-600 text-lg"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-700 leading-tight text-sm md:text-base">topologi_rangkaian.rar</h3>
-                            <div class="flex items-center mt-1 space-x-2">
-                                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold uppercase">RAR</span>
-                                <span class="text-[10px] text-slate-400 font-medium">23 KB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="topologi_rangkaian.rar" download onclick="handleDownload(event, 'topologi_rangkaian.rar')" class="download-btn w-10 h-10 flex items-center justify-center bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-xl shadow-sm transition-all">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-
-                <!-- Contoh Kebutuhan Alat -->
-                <div class="file-row p-5 flex items-center justify-between group animate-fade-in" style="animation-delay: 0.6s;">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-green-100 group-hover:bg-green-200 rounded-2xl flex items-center justify-center transition-colors shadow-sm">
-                            <i class="fas fa-file-excel text-green-600 text-lg"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-700 leading-tight text-sm md:text-base">inventori_alat_bahan.xlsx</h3>
-                            <div class="flex items-center mt-1 space-x-2">
-                                <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold uppercase">XLSX</span>
-                                <span class="text-[10px] text-slate-400 font-medium">10 KB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="inventori_alat_bahan.xlsx" download onclick="handleDownload(event, 'inventori_alat_bahan.xlsx')" class="download-btn w-10 h-10 flex items-center justify-center bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-xl shadow-sm transition-all">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-
+    <div class="max-w-3xl mx-auto animate-fade">
+        
+        <!-- Header Profil -->
+        <header class="text-center mb-16">
+            <div class="relative inline-block group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                <img src="bintang.png" alt="Foto Bintang" 
+                     onerror="this.src='https://ui-avatars.com/api/?name=Bintang&background=2563eb&color=fff&size=200'" 
+                     class="relative w-36 h-36 rounded-full border-2 border-white/10 mx-auto object-cover shadow-2xl">
+                <div class="absolute bottom-2 right-4 bg-green-500 w-5 h-5 rounded-full border-4 border-slate-900 shadow-lg"></div>
             </div>
             
-            <div class="p-6 bg-slate-50/80 text-center border-t border-slate-100">
-                <p class="text-xs text-slate-500 italic flex items-center justify-center">
-                    <i class="fas fa-circle-info mr-2"></i>
-                    Sila hubungi Bintang jika terdapat sebarang ralat semasa memuat turun fail.
-                </p>
+            <h1 class="text-5xl font-extrabold mt-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-400">
+                Bintang
+            </h1>
+            <div class="flex items-center justify-center space-x-2 mt-2">
+                <span class="h-px w-8 bg-blue-500/50"></span>
+                <p class="text-blue-400 font-semibold tracking-widest uppercase text-xs">Digital Asset Curator</p>
+                <span class="h-px w-8 bg-blue-500/50"></span>
+            </div>
+            <p class="text-slate-400 mt-6 max-w-lg mx-auto leading-relaxed italic">
+                "Menyediakan akses pantas kepada tutorial eksklusif dan sumber rangkaian profesional."
+            </p>
+        </header>
+
+        <!-- Statistik Ringkas (Visual Saja) -->
+        <div class="grid grid-cols-3 gap-4 mb-10 text-center">
+            <div class="glass py-3 rounded-2xl">
+                <p class="text-xl font-bold">6</p>
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest">Fail</p>
+            </div>
+            <div class="glass py-3 rounded-2xl border-blue-500/30">
+                <p class="text-xl font-bold text-blue-400">Verified</p>
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest">Status</p>
+            </div>
+            <div class="glass py-3 rounded-2xl">
+                <p class="text-xl font-bold">2024</p>
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest">Tahun</p>
             </div>
         </div>
-    </main>
 
-    <footer class="text-center py-10 text-slate-400 text-[10px] uppercase tracking-[0.2em] font-bold">
-        &copy; 2024 Repositori Digital Bintang <span class="mx-2">•</span> Hak Cipta Terpelihara
-    </footer>
+        <!-- Senarai Fail -->
+        <div class="space-y-4">
+            
+            <!-- Fail 1 -->
+            <div class="file-card glass p-5 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center space-x-5">
+                    <div class="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
+                        <i class="fas fa-box-open text-blue-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-white">bintang template hostpot.rar</h3>
+                        <p class="text-xs text-slate-500 flex items-center">
+                            <i class="far fa-hdd mr-1"></i> 44 KB <span class="mx-2 text-slate-700">|</span> <i class="far fa-clock mr-1"></i> Baru Sahaja
+                        </p>
+                    </div>
+                </div>
+                <a href="bintang template hostpot.rar" download class="download-btn text-white p-3 rounded-xl shadow-lg transition-transform active:scale-95">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
 
-    <!-- Notifikasi Toast -->
-    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:right-8 md:translate-x-0 translate-y-20 opacity-0 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-2xl transition-all duration-300 flex items-center space-x-3 z-[100]">
-        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-            <i class="fas fa-check text-xs"></i>
+            <!-- Fail 2 -->
+            <div class="file-card glass p-5 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center space-x-5">
+                    <div class="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20">
+                        <i class="fas fa-file-code text-amber-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-white">bintang template web.zip</h3>
+                        <p class="text-xs text-slate-500 flex items-center">
+                            <i class="far fa-hdd mr-1"></i> 11 KB <span class="mx-2 text-slate-700">|</span> <i class="far fa-clock mr-1"></i> Terkini
+                        </p>
+                    </div>
+                </div>
+                <a href="bintang template web.zip" download class="download-btn text-white p-3 rounded-xl shadow-lg transition-transform active:scale-95">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+
+            <!-- Fail 3 -->
+            <div class="file-card glass p-5 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center space-x-5">
+                    <div class="bg-sky-500/10 p-4 rounded-xl border border-sky-500/20">
+                        <i class="fas fa-file-word text-sky-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-white">bintang tutor dns & web server.docx</h3>
+                        <p class="text-xs text-slate-500 flex items-center">
+                            <i class="far fa-hdd mr-1"></i> 178 KB <span class="mx-2 text-slate-700">|</span> <i class="far fa-file-alt mr-1"></i> Dokumen
+                        </p>
+                    </div>
+                </div>
+                <a href="bintang tutor dns & web server.docx" download class="download-btn text-white p-3 rounded-xl shadow-lg transition-transform active:scale-95">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+
+            <!-- Fail 4 -->
+            <div class="file-card glass p-5 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center space-x-5">
+                    <div class="bg-sky-500/10 p-4 rounded-xl border border-sky-500/20">
+                        <i class="fas fa-file-word text-sky-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-white">bintang tutor http & https.docx</h3>
+                        <p class="text-xs text-slate-500 flex items-center">
+                            <i class="far fa-hdd mr-1"></i> 154 KB <span class="mx-2 text-slate-700">|</span> <i class="far fa-file-alt mr-1"></i> Dokumen
+                        </p>
+                    </div>
+                </div>
+                <a href="bintang tutor http & https.docx" download class="download-btn text-white p-3 rounded-xl shadow-lg transition-transform active:scale-95">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+
+            <!-- Fail 5 -->
+            <div class="file-card glass p-5 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center space-x-5">
+                    <div class="bg-indigo-500/10 p-4 rounded-xl border border-indigo-500/20">
+                        <i class="fas fa-network-wired text-indigo-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-white">topologi.rar</h3>
+                        <p class="text-xs text-slate-500 flex items-center">
+                            <i class="far fa-hdd mr-1"></i> 23 KB <span class="mx-2 text-slate-700">|</span> <i class="fas fa-diagram-project mr-1"></i> Projek
+                        </p>
+                    </div>
+                </div>
+                <a href="topologi.rar" download class="download-btn text-white p-3 rounded-xl shadow-lg transition-transform active:scale-95">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+
+            <!-- Fail 6 -->
+            <div class="file-card glass p-5 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center space-x-5">
+                    <div class="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
+                        <i class="fas fa-file-excel text-emerald-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-white">COntoh kebutuhan alat dan bahan.xlsx</h3>
+                        <p class="text-xs text-slate-500 flex items-center">
+                            <i class="far fa-hdd mr-1"></i> 10 KB <span class="mx-2 text-slate-700">|</span> <i class="fas fa-table mr-1"></i> Spreadsheet
+                        </p>
+                    </div>
+                </div>
+                <a href="COntoh kebutuhan alat dan bahan.xlsx" download class="download-btn text-white p-3 rounded-xl shadow-lg transition-transform active:scale-95">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+
         </div>
-        <div class="text-sm">
-            <p class="font-bold">Muat Turun Bermula</p>
-            <p class="text-slate-400 text-xs" id="toast-filename">fail.zip</p>
-        </div>
+
+        <!-- Footer -->
+        <footer class="mt-20 text-center">
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-slate-800 to-transparent mb-8"></div>
+            <p class="text-slate-500 text-sm tracking-wide">
+                &copy; 2024 <span class="text-blue-400 font-semibold">Bintang</span> Cloud Hub. 
+                <br>Dicipta dengan penuh gaya.
+            </p>
+        </footer>
     </div>
 
-    <script>
-        function handleDownload(event, fileName) {
-            // Nota: Dalam persekitaran sebenar, fail mesti wujud di pelayan
-            // Atribut 'download' pada tag <a> akan mengendalikan muat turun secara automatik
-            
-            const toast = document.getElementById('toast');
-            const toastFile = document.getElementById('toast-filename');
-            
-            toastFile.innerText = fileName;
-            
-            // Papar Toast
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-            
-            // Sorok semula selepas 3 saat
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-                toast.classList.remove('translate-y-0', 'opacity-100');
-            }, 3000);
-        }
-
-        // Fungsi carian ringkas
-        document.querySelector('input').addEventListener('input', function(e) {
-            const term = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('.file-row');
-            
-            rows.forEach(row => {
-                const text = row.querySelector('h3').innerText.toLowerCase();
-                if(text.includes(term)) {
-                    row.style.display = 'flex';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
